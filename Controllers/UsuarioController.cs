@@ -17,7 +17,13 @@ namespace API01.Controllers
                Hora = DateTime.Now.ToShortDateString()
             };
             return Ok(obj); 
-        }   
-    
+        }
+        [HttpGet("Apresentar/{nome}")]   
+        public IActionResult Apresentar(string nome)
+        {
+            var mensagem = $"Olá, {nome}, seja bem-vindo!";
+            return Ok(new {mensagem});
+        }
     }
+            
 }
