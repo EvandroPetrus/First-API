@@ -14,7 +14,7 @@ namespace API01.Controllers
             var obj = new
             {
                Data = DateTime.Now.ToLongDateString(),
-               Hora = DateTime.Now.ToShortDateString()
+               Hora = DateTime.Now.ToString("HH:mm:ss") + "s"
             };
             return Ok(obj); 
         }
