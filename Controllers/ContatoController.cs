@@ -66,6 +66,23 @@ namespace API01.Controllers {
 
             return Ok(contatoBancoDeDados);
         }
+         [HttpPatch("AtualizarNumeroContato")]
+       public IActionResult AtualizarTelefoneContato(int id, Contato contato)
+       {
+            var contatoBancoDeDados = _context.Contatos.Find(id);
+            
+             if(contatoBancoDeDados == null)
+            {
+                return NotFound();
+            }
+
+            contatoBancoDeDados.Telefone = contato.Telefone;
+
+            _context.Contatos.Update(contatoBancoDeDados);
+            _context.SaveChanges();
+            return Ok(contatoBancoDeDados);
+            
+       }
         [HttpDelete("{id}")]
         public IActionResult DeletarContato(int id)
         {
@@ -75,12 +92,13 @@ namespace API01.Controllers {
             {
                 return NotFound();
             }
-            
+ 
             _context.Contatos.Remove(contatoBancoDeDados);
             _context.SaveChanges();
+            
             return NoContent();
         }
-       
+           
     }
 
 }
